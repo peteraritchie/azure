@@ -1,0 +1,42 @@
+{
+ "properties": {
+  "displayName": "Ensure CreationDate tag",
+  "policyType": "Custom",
+  "mode": "All",
+  "description": "Ensure CreationDate tag",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "a5734943-27ff-4d6d-8d13-b9c1ff4c4167",
+   "createdOn": "2022-11-19T17:21:24.7675511Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "parameters": {},
+  "policyRule": {
+   "if": {
+    "not": {
+     "field": "tags['CreationDate']",
+     "exists": "true"
+    }
+   },
+   "then": {
+    "effect": "modify",
+    "details": {
+     "roleDefinitionIds": [
+      "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+     ],
+     "operations": [
+      {
+       "operation": "addOrReplace",
+       "field": "tags['CreationDate']",
+       "value": "[utcNow()]"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "id": "/subscriptions/5087bbec-59da-414a-a6cb-e3fdb87fff58/providers/Microsoft.Authorization/policyDefinitions/02042706-e25d-4202-91f0-96b7caeafbd7",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "02042706-e25d-4202-91f0-96b7caeafbd7"
+}
